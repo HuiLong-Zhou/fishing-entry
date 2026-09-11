@@ -47,6 +47,28 @@ a {
   user-select: none;
 }
 
+.site-motto {
+  position: absolute;
+  top: clamp(18px, 4.5vh, 42px);
+  left: 50%;
+  z-index: 4;
+  width: min(1120px, calc(100% - 48px));
+  margin: 0;
+  color: #fff1bd;
+  font-family:
+    "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: clamp(13px, 1.1rem, 18px);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-align: center;
+  text-shadow:
+    0 1px 2px rgba(3, 25, 36, 0.72),
+    0 0 18px rgba(255, 192, 112, 0.46),
+    0 0 32px rgba(91, 205, 196, 0.2);
+  transform: translateX(-50%);
+}
+
 .sky,
 .sun,
 .sun-halo,
@@ -517,6 +539,14 @@ a {
 }
 
 @media (max-width: 760px), (max-aspect-ratio: 4 / 5) {
+  .site-motto {
+    top: max(16px, env(safe-area-inset-top));
+    width: calc(100% - 36px);
+    font-size: 13px;
+    line-height: 1.45;
+    text-wrap: balance;
+  }
+
   .scene-coordinate {
     display: none;
   }
