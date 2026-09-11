@@ -1,0 +1,561 @@
+:root {
+  color-scheme: dark;
+  font-family:
+    "Noto Serif SC", "Songti SC", "STSong", "SimSun", Georgia, serif;
+  background: #062b3c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: #062b3c;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fishing-page {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.scene-shell {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.ocean-scene {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.sky,
+.sun,
+.sun-halo,
+.clouds,
+.seagulls,
+.reef,
+.boat-reflection,
+.boat-group,
+.foreground-water {
+  animation: scene-reveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.sun {
+  animation:
+    scene-reveal 1.4s 0.12s cubic-bezier(0.22, 1, 0.36, 1) both,
+    sun-breathe 5.8s 1.2s ease-in-out infinite;
+}
+
+.sun-road {
+  animation:
+    scene-reveal 1.6s 0.25s cubic-bezier(0.22, 1, 0.36, 1) both,
+    reflection-breathe 6.4s 1.2s ease-in-out infinite;
+  opacity: 0.5;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.clouds {
+  stroke-width: 7;
+}
+
+.cloud {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: cloud-drift 16s ease-in-out infinite alternate;
+}
+
+.cloud--far {
+  stroke: #d78a74;
+  opacity: 0.26;
+}
+
+.cloud--near {
+  stroke: #f4bd8d;
+  opacity: 0.2;
+  animation-delay: -4s;
+}
+
+.cloud--haze {
+  stroke: #ffe0ad;
+  stroke-width: 10;
+  opacity: 0.14;
+  animation-delay: -8s;
+}
+
+.seagulls {
+  animation-delay: 0.8s;
+}
+
+.seagulls path {
+  animation: gull-glide 4.8s ease-in-out infinite;
+}
+
+.seagulls path:nth-child(2) {
+  animation-delay: -1.5s;
+}
+
+.seagulls path:nth-child(3) {
+  animation-delay: -3s;
+}
+
+.wave {
+  stroke: #9ccdc7;
+  opacity: 0.18;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wave-drift 9s ease-in-out infinite alternate;
+}
+
+.wave--back {
+  stroke-width: 2.4;
+  opacity: 0.12;
+}
+
+.wave--mid {
+  stroke-width: 3.2;
+  opacity: 0.15;
+  animation-delay: -2.5s;
+}
+
+.wave--front {
+  stroke-width: 4.4;
+  opacity: 0.19;
+  animation-delay: -5s;
+}
+
+.foreground-wave {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wave-drift 7.5s ease-in-out infinite alternate;
+}
+
+.foreground-wave:nth-child(2) {
+  animation-delay: -3s;
+}
+
+.boat-group {
+  animation-delay: 0.24s;
+}
+
+.boat-hull {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: boat-rock 4.6s ease-in-out infinite;
+}
+
+.person {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: person-breathe 4.6s ease-in-out infinite;
+}
+
+.nailong-character-model {
+  filter: drop-shadow(0 5px 5px rgba(3, 22, 30, 0.28));
+}
+
+.boat-reflection {
+  transform-box: fill-box;
+  transform-origin: center top;
+  animation:
+    scene-reveal 1.2s 0.24s cubic-bezier(0.22, 1, 0.36, 1) both,
+    reflection-breathe 5s 1s ease-in-out infinite;
+}
+
+.fishing-line {
+  filter: drop-shadow(0 1px 3px rgba(228, 238, 229, 0.3));
+}
+
+.hook-glow {
+  animation: hook-pulse 2.6s ease-in-out infinite;
+}
+
+.fish-layer {
+  animation: scene-reveal 1.4s 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.fish-link {
+  --fish-body: #d98a57;
+  --fish-light: #ffe0a7;
+  --fish-accent: #b9624d;
+  --fish-glow: rgba(244, 172, 101, 0.5);
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  pointer-events: all;
+}
+
+.fish-float {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: fish-idle 4.8s ease-in-out infinite;
+}
+
+.fish-link:nth-of-type(2) .fish-float {
+  animation-delay: -1.8s;
+}
+
+.fish-link:nth-of-type(3) .fish-float {
+  animation-delay: -3.2s;
+}
+
+.fish-hit {
+  fill: rgba(255, 255, 255, 0.001);
+  stroke: rgba(255, 255, 255, 0);
+  stroke-width: 2;
+  pointer-events: all;
+  transition: stroke 180ms ease;
+}
+
+.boat-group,
+.boat-reflection,
+.foreground-water,
+.fishing-line {
+  pointer-events: none;
+}
+
+.fish-art {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    filter 220ms ease,
+    transform 220ms ease;
+}
+
+.fish-link:hover .fish-art,
+.fish-link:focus-visible .fish-art {
+  filter: drop-shadow(0 0 13px var(--fish-glow));
+  transform: translateY(-7px) scale(1.035);
+}
+
+.fish-link:focus-visible .fish-hit {
+  stroke: #fff3d1;
+}
+
+.fish-body {
+  fill: var(--fish-body);
+}
+
+.fish-tail {
+  fill: var(--fish-accent);
+  transform-box: fill-box;
+  transform-origin: right center;
+  animation: tail-swim 1.8s ease-in-out infinite;
+}
+
+.fish-belly {
+  fill: var(--fish-light);
+  opacity: 0.68;
+}
+
+.fish-top-fin,
+.fish-bottom-fin {
+  fill: var(--fish-accent);
+  opacity: 0.92;
+}
+
+.fish-gill,
+.fish-scale {
+  fill: none;
+  stroke: #173b43;
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  opacity: 0.38;
+}
+
+.fish-shine {
+  fill: none;
+  stroke: #fff5dc;
+  stroke-width: 5;
+  stroke-linecap: round;
+  opacity: 0.33;
+}
+
+.fish-eye {
+  fill: #071e28;
+}
+
+.fish-eye-glint {
+  fill: #fff9e8;
+}
+
+.fish-label {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.fish-label rect {
+  fill: rgba(5, 25, 35, 0.9);
+  stroke: rgba(255, 230, 183, 0.34);
+  stroke-width: 1.5;
+  backdrop-filter: blur(8px);
+}
+
+.fish-label-title {
+  fill: #fff1d4;
+  font-family:
+    "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.fish-link:hover .fish-label,
+.fish-link:focus-visible .fish-label {
+  opacity: 1;
+}
+
+.scene-coordinate {
+  margin: 0;
+  font-family:
+    "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  letter-spacing: 0;
+}
+
+.scene-coordinate {
+  position: absolute;
+  right: clamp(20px, 4vw, 64px);
+  bottom: clamp(22px, 5vh, 58px);
+  z-index: 3;
+  color: rgba(201, 229, 219, 0.48);
+  font-size: 10px;
+  pointer-events: none;
+}
+
+.fallback-links {
+  position: absolute;
+  bottom: clamp(18px, 4vh, 42px);
+  left: clamp(20px, 4vw, 64px);
+  z-index: 4;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  font-family:
+    "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.fallback-links a {
+  position: relative;
+  color: rgba(216, 238, 227, 0.56);
+  font-size: 11px;
+  text-decoration: none;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.fallback-links a::before {
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--link-color, #f3bd83);
+  content: "";
+  opacity: 0.8;
+  transform: translateY(-50%);
+}
+
+.fallback-links a:hover,
+.fallback-links a:focus-visible {
+  color: #fff4d7;
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.noscript-links {
+  position: absolute;
+  bottom: 72px;
+  left: 24px;
+  z-index: 8;
+  display: flex;
+  gap: 16px;
+  padding: 12px 18px;
+  border: 1px solid rgba(255, 231, 190, 0.25);
+  border-radius: 10px;
+  background: rgba(5, 25, 35, 0.9);
+}
+
+.noscript-links a {
+  color: #fff1d4;
+}
+
+@keyframes scene-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sun-breathe {
+  0%,
+  100% {
+    opacity: 0.93;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.035);
+  }
+}
+
+@keyframes cloud-drift {
+  from {
+    transform: translateX(-9px);
+  }
+  to {
+    transform: translateX(15px);
+  }
+}
+
+@keyframes gull-glide {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.78;
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes wave-drift {
+  from {
+    transform: translateX(-14px) scaleX(1);
+  }
+  to {
+    transform: translateX(16px) scaleX(1.018);
+  }
+}
+
+@keyframes reflection-breathe {
+  0%,
+  100% {
+    opacity: 0.32;
+    transform: scaleX(0.96);
+  }
+  50% {
+    opacity: 0.56;
+    transform: scaleX(1.04);
+  }
+}
+
+@keyframes boat-rock {
+  0%,
+  100% {
+    transform: rotate(-0.55deg) translateY(0);
+  }
+  50% {
+    transform: rotate(0.7deg) translateY(3px);
+  }
+}
+
+@keyframes person-breathe {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-2px) rotate(0.35deg);
+  }
+}
+
+@keyframes fish-idle {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(8px, -8px, 0) rotate(-1.2deg);
+  }
+}
+
+@keyframes tail-swim {
+  0%,
+  100% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(-8deg);
+  }
+}
+
+@keyframes hook-pulse {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.3);
+  }
+}
+
+@media (max-width: 760px), (max-aspect-ratio: 4 / 5) {
+  .scene-coordinate {
+    display: none;
+  }
+
+  .fallback-links {
+    bottom: max(18px, env(safe-area-inset-bottom));
+    left: 22px;
+    gap: 14px;
+  }
+
+  .fallback-links a {
+    font-size: 10px;
+  }
+
+  .fish-label-title {
+    font-size: 15px;
+  }
+
+  .fish-label {
+    opacity: 0.82;
+  }
+
+  .fish-label rect {
+    fill: rgba(5, 25, 35, 0.74);
+    stroke: rgba(255, 230, 183, 0.22);
+  }
+
+  .sun-road {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

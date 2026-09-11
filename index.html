@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="黄昏海面上的互动垂钓入口，通往周汇龙的博客、GitHub 与 CSDN。"
+    />
+    <meta name="theme-color" content="#0a3445" />
+    <title>海上垂钓 · Zhou Huilong</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="fishing-page" id="fishing-page">
+      <div class="scene-shell">
+        <svg
+          class="ocean-scene"
+          id="ocean-scene"
+          viewBox="0 0 1600 900"
+          preserveAspectRatio="xMidYMid slice"
+          role="group"
+          aria-labelledby="scene-title scene-description"
+        >
+          <title id="scene-title">海上黄昏垂钓</title>
+          <desc id="scene-description">
+            黄昏海面上，一个人站在小船上垂钓。海里游着三条不同颜色的鱼，分别通往博客、GitHub
+            和 CSDN。
+          </desc>
+
+          <defs>
+            <linearGradient id="sky-gradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#142d4b" />
+              <stop offset="30%" stop-color="#485274" />
+              <stop offset="52%" stop-color="#d16f70" />
+              <stop offset="68%" stop-color="#f29a72" />
+              <stop offset="82%" stop-color="#ffc27e" />
+              <stop offset="100%" stop-color="#ffe0a4" />
+            </linearGradient>
+
+            <linearGradient id="sea-gradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#efb486" />
+              <stop offset="9%" stop-color="#3d8390" />
+              <stop offset="42%" stop-color="#125b70" />
+              <stop offset="100%" stop-color="#062f46" />
+            </linearGradient>
+
+            <linearGradient id="sun-reflection" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffd89a" stop-opacity="0.9" />
+              <stop offset="42%" stop-color="#f6a66f" stop-opacity="0.48" />
+              <stop offset="100%" stop-color="#f6a66f" stop-opacity="0" />
+            </linearGradient>
+
+            <radialGradient id="sun-halo">
+              <stop offset="0%" stop-color="#ffe7b2" stop-opacity="0.72" />
+              <stop offset="46%" stop-color="#ffc47d" stop-opacity="0.22" />
+              <stop offset="100%" stop-color="#ffbe7a" stop-opacity="0" />
+            </radialGradient>
+
+            <linearGradient id="boat-fill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#334754" />
+              <stop offset="54%" stop-color="#172c37" />
+              <stop offset="100%" stop-color="#0b202b" />
+            </linearGradient>
+
+            <linearGradient id="nailong-body-fill" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffe97a" />
+              <stop offset="52%" stop-color="#f8ce45" />
+              <stop offset="100%" stop-color="#e6a72d" />
+            </linearGradient>
+
+            <linearGradient id="nailong-belly-fill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fff8ca" />
+              <stop offset="100%" stop-color="#f8dda0" />
+            </linearGradient>
+
+            <linearGradient id="nailong-accent-fill" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#a8ead8" />
+              <stop offset="52%" stop-color="#72cbb8" />
+              <stop offset="100%" stop-color="#3f9b91" />
+            </linearGradient>
+
+            <linearGradient id="nailong-wing-fill" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#fff3a2" />
+              <stop offset="56%" stop-color="#f6d75d" />
+              <stop offset="100%" stop-color="#dba638" />
+            </linearGradient>
+
+            <linearGradient id="vignette-gradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#04131d" stop-opacity="0.42" />
+              <stop offset="38%" stop-color="#04131d" stop-opacity="0" />
+              <stop offset="100%" stop-color="#02131f" stop-opacity="0.52" />
+            </linearGradient>
+
+            <filter id="soft-glow" x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur stdDeviation="14" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+
+            <filter id="water-blur" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="7" />
+            </filter>
+
+            <clipPath id="sea-clip">
+              <rect x="0" y="420" width="1600" height="480" />
+            </clipPath>
+
+            <filter id="fish-shadow" x="-40%" y="-60%" width="180%" height="220%">
+              <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#021a24" flood-opacity="0.42" />
+            </filter>
+          </defs>
+
+          <rect class="sky" x="0" y="0" width="1600" height="430" fill="url(#sky-gradient)" />
+
+          <circle class="sun-halo" cx="1120" cy="330" r="245" fill="url(#sun-halo)" />
+          <circle class="sun" cx="1120" cy="330" r="67" fill="#ffe0a0" filter="url(#soft-glow)" />
+
+          <g class="clouds" fill="none" stroke-linecap="round">
+            <path
+              class="cloud cloud--far"
+              d="M105 176 C241 153 326 170 442 148 C528 132 607 145 666 166"
+            />
+            <path
+              class="cloud cloud--far"
+              d="M948 111 C1088 88 1206 104 1337 75 C1419 57 1509 66 1587 93"
+            />
+            <path
+              class="cloud cloud--near"
+              d="M225 277 C354 251 481 272 596 245 C691 223 786 236 861 265"
+            />
+            <path
+              class="cloud cloud--near"
+              d="M1012 243 C1130 218 1237 240 1347 215 C1426 197 1497 205 1581 239"
+            />
+            <path
+              class="cloud cloud--haze"
+              d="M85 357 C290 332 443 348 643 328 C824 310 1018 321 1168 308 C1300 296 1444 303 1572 325"
+            />
+          </g>
+
+          <g class="seagulls" fill="none" stroke="#203b49" stroke-linecap="round">
+            <path d="M914 236 C926 224 934 224 945 236 C956 224 965 224 977 236" />
+            <path d="M1002 278 C1010 270 1016 270 1024 278 C1032 270 1039 270 1047 278" />
+            <path d="M854 291 C860 285 865 285 871 291 C877 285 883 285 889 291" />
+          </g>
+
+          <path
+            class="horizon-mist"
+            d="M0 418 C208 395 390 410 583 403 C797 395 988 407 1190 400 C1354 394 1497 401 1600 417 L1600 452 L0 452 Z"
+            fill="#ffd29b"
+            opacity="0.25"
+            filter="url(#water-blur)"
+          />
+
+          <rect x="0" y="420" width="1600" height="480" fill="url(#sea-gradient)" />
+
+          <g clip-path="url(#sea-clip)">
+            <path
+              class="sun-road sun-road--wide"
+              d="M1042 420 C972 535 945 725 1088 900 L1213 900 C1130 728 1167 546 1193 420 Z"
+              fill="url(#sun-reflection)"
+              opacity="0.65"
+            />
+            <path
+              class="sun-road sun-road--bright"
+              d="M1081 420 C1063 548 1075 708 1119 900 L1160 900 C1136 700 1147 530 1165 420 Z"
+              fill="#ffd89c"
+              opacity="0.3"
+            />
+          </g>
+
+          <g class="wave-field" clip-path="url(#sea-clip)" fill="none" stroke-linecap="round">
+            <path
+              class="wave wave--back"
+              d="M-80 501 C120 482 269 516 439 500 C619 482 759 506 911 500 C1088 493 1238 505 1421 491 C1511 484 1584 490 1680 503"
+            />
+            <path
+              class="wave wave--back"
+              d="M-60 560 C119 542 295 566 458 552 C639 537 827 562 1012 551 C1197 540 1367 554 1660 534"
+            />
+            <path
+              class="wave wave--mid"
+              d="M-48 628 C138 604 311 630 495 619 C664 608 835 628 1024 617 C1206 607 1391 621 1651 600"
+            />
+            <path
+              class="wave wave--mid"
+              d="M-72 713 C145 676 309 716 507 696 C699 677 863 713 1066 691 C1241 672 1433 701 1680 671"
+            />
+            <path
+              class="wave wave--front"
+              d="M-52 807 C152 766 334 812 532 787 C724 763 926 810 1128 783 C1290 762 1455 793 1657 773"
+            />
+            <path
+              class="wave wave--front"
+              d="M-74 875 C150 840 331 874 526 855 C723 836 913 876 1113 852 C1293 830 1464 855 1673 838"
+            />
+          </g>
+
+          <g class="reef" opacity="0.72">
+            <path
+              d="M42 424 C108 397 174 405 226 429 C279 453 329 447 389 426 L389 461 L0 461 Z"
+              fill="#163f4c"
+              opacity="0.65"
+            />
+            <path d="M246 425 L284 360 L301 424 Z" fill="#163f4c" opacity="0.5" />
+            <path d="M1337 423 C1415 394 1491 406 1568 439 L1568 457 L1332 457 Z" fill="#163f4c" opacity="0.68" />
+            <path d="M1461 425 L1502 365 L1518 427 Z" fill="#163f4c" opacity="0.45" />
+          </g>
+
+          <g id="fish-layer" class="fish-layer" aria-label="可前往的网站"></g>
+
+          <g class="boat-reflection" opacity="0.33">
+            <path
+              d="M329 666 C452 699 622 699 726 662 L682 759 C562 794 411 776 300 733 Z"
+              fill="#082b3a"
+              filter="url(#water-blur)"
+            />
+          </g>
+
+          <g class="boat-group">
+            <path
+              class="boat-hull"
+              d="M274 624 C423 674 615 672 758 619 L729 707 C610 752 400 751 278 702 Z"
+              fill="url(#boat-fill)"
+            />
+            <path
+              class="boat-rim"
+              d="M271 621 C418 662 609 661 760 616"
+              fill="none"
+              stroke="#c5795e"
+              stroke-width="8"
+              stroke-linecap="round"
+            />
+            <path
+              class="boat-highlight"
+              d="M305 643 C447 682 626 680 742 636"
+              fill="none"
+              stroke="#f2a376"
+              stroke-width="3"
+              stroke-linecap="round"
+              opacity="0.54"
+            />
+            <path d="M386 676 L375 731" stroke="#0b2631" stroke-width="5" opacity="0.62" />
+            <path d="M654 675 L665 731" stroke="#0b2631" stroke-width="5" opacity="0.62" />
+
+            <g class="person nailong-character">
+              <g transform="translate(618 291) scale(-1 1)">
+                <image
+                  class="nailong-character-model"
+                  href="./assets/nailong.png"
+                  x="0"
+                  y="0"
+                  width="260"
+                  height="364"
+                  preserveAspectRatio="xMidYMid meet"
+                />
+              </g>
+            </g>
+
+            <g class="fishing-rod">
+              <path
+                d="M578 441 L849 352"
+                fill="none"
+                stroke="#13242d"
+                stroke-width="8"
+                stroke-linecap="round"
+              />
+              <path
+                d="M607 433 L846 354"
+                fill="none"
+                stroke="#bd765c"
+                stroke-width="3"
+                stroke-linecap="round"
+                opacity="0.82"
+              />
+              <circle cx="566" cy="442" r="15" fill="#0b1a21" />
+              <circle cx="566" cy="442" r="7" fill="#a96651" opacity="0.72" />
+              <circle cx="847" cy="353" r="3.5" fill="#ffd39b" />
+            </g>
+          </g>
+
+          <path
+            class="fishing-line"
+            id="fishing-line"
+            d="M847 353 Q932 474 1005 596"
+            fill="none"
+            stroke="#e9e5d6"
+            stroke-width="2.1"
+            stroke-linecap="round"
+            opacity="0.84"
+          />
+
+          <g class="fishing-hook" id="fishing-hook" transform="translate(1005 596)" pointer-events="none">
+            <line x1="0" y1="0" x2="0" y2="29" stroke="#e9e5d6" stroke-width="2.1" />
+            <path
+              d="M0 28 C0 44 17 46 21 31 C22 27 20 23 16 20"
+              fill="none"
+              stroke="#f3e8d1"
+              stroke-width="2.8"
+              stroke-linecap="round"
+            />
+            <path
+              d="M13 18 L20 22 L16 15"
+              fill="none"
+              stroke="#f3e8d1"
+              stroke-width="2.2"
+              stroke-linejoin="round"
+            />
+            <circle class="hook-glow" cx="3" cy="10" r="11" fill="#ffd694" opacity="0.25" />
+          </g>
+
+          <g class="foreground-water" clip-path="url(#sea-clip)">
+            <path
+              class="foreground-wave"
+              d="M-57 789 C143 758 300 801 489 778 C676 755 840 801 1030 777 C1225 752 1425 790 1663 757"
+              fill="none"
+              stroke="#8ec2bf"
+              stroke-width="4"
+              stroke-linecap="round"
+              opacity="0.2"
+            />
+            <path
+              class="foreground-wave"
+              d="M-45 842 C159 805 326 852 522 825 C701 800 895 848 1080 821 C1277 793 1466 832 1673 802"
+              fill="none"
+              stroke="#a2d1c9"
+              stroke-width="5"
+              stroke-linecap="round"
+              opacity="0.16"
+            />
+          </g>
+
+          <rect x="0" y="0" width="1600" height="900" fill="url(#vignette-gradient)" pointer-events="none" />
+        </svg>
+
+        <p class="scene-coordinate" aria-hidden="true">31.23° N&nbsp;&nbsp;·&nbsp;&nbsp;121.47° E</p>
+
+        <nav class="fallback-links" id="fallback-links" aria-label="网站链接"></nav>
+
+        <noscript>
+          <div class="noscript-links">
+            <a href="https://zhouhuilong.cn/">博客</a>
+            <a href="https://github.com/HuiLong-Zhou">GitHub</a>
+            <a href="https://blog.csdn.net/m0_72406127">CSDN</a>
+          </div>
+        </noscript>
+      </div>
+    </main>
+
+    <template id="fish-template">
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <a class="fish-link" href="#" aria-label="">
+          <g class="fish-float">
+            <rect class="fish-hit" x="-112" y="-65" width="224" height="130" rx="65" />
+            <g class="fish-art" filter="url(#fish-shadow)">
+              <path class="fish-tail" d="M-66 0 C-89 -31 -111 -40 -129 -23 L-111 0 L-129 23 C-111 40 -89 31 -66 0 Z" />
+              <ellipse class="fish-body" cx="2" cy="0" rx="79" ry="39" />
+              <path class="fish-belly" d="M-57 13 C-30 34 30 40 67 10 C45 31 1 43 -39 29 Z" />
+              <path class="fish-top-fin" d="M-15 -29 C4 -57 27 -59 49 -30 C26 -35 5 -35 -15 -29 Z" />
+              <path class="fish-bottom-fin" d="M-18 31 C-6 51 16 55 39 34 C20 40 0 40 -18 31 Z" />
+              <path class="fish-gill" d="M37 -23 C28 -8 28 10 39 25" />
+              <path class="fish-shine" d="M-44 -20 C-19 -34 19 -32 47 -15" />
+              <circle class="fish-eye" cx="54" cy="-10" r="8" />
+              <circle class="fish-eye-glint" cx="56.5" cy="-12.5" r="2.2" />
+              <path class="fish-scale" d="M-5 -24 C4 -12 5 10 -4 22" />
+              <path class="fish-scale" d="M15 -21 C24 -9 25 10 16 20" />
+            </g>
+            <g class="fish-label" aria-hidden="true">
+              <rect x="-67" y="-70" width="134" height="40" rx="20" />
+              <text class="fish-label-title" y="-46" text-anchor="middle"></text>
+            </g>
+          </g>
+        </a>
+      </svg>
+    </template>
+
+    <script src="./site-links.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
