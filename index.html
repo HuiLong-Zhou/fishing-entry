@@ -246,16 +246,40 @@
             <path d="M386 676 L375 731" stroke="#0b2631" stroke-width="5" opacity="0.62" />
             <path d="M654 675 L665 731" stroke="#0b2631" stroke-width="5" opacity="0.62" />
 
-            <g class="person nailong-character">
+            <g
+              class="person nailong-character"
+              id="nailong-character"
+              data-form="small"
+              role="button"
+              tabindex="0"
+              aria-label="点击切换为大奶龙"
+            >
               <g transform="translate(618 291) scale(-1 1)">
                 <image
-                  class="nailong-character-model"
+                  class="nailong-form nailong-form--small nailong-character-model"
                   href="./assets/nailong.png"
                   x="0"
                   y="0"
                   width="260"
                   height="364"
                   preserveAspectRatio="xMidYMid meet"
+                />
+                <image
+                  class="nailong-form nailong-form--big nailong-character-model"
+                  href="./assets/bignailong.png"
+                  x="0"
+                  y="-149"
+                  width="300"
+                  height="513"
+                  preserveAspectRatio="xMidYMid meet"
+                />
+                <rect
+                  class="nailong-hit-area"
+                  x="-20"
+                  y="-170"
+                  width="340"
+                  height="565"
+                  rx="72"
                 />
               </g>
             </g>

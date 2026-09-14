@@ -9,6 +9,7 @@
   const fishingHook = document.querySelector("#fishing-hook");
   const boatGroup = document.querySelector(".boat-group");
   const boatReflection = document.querySelector(".boat-reflection");
+  const nailongCharacter = document.querySelector("#nailong-character");
   const sun = document.querySelector(".sun");
   const sunHalo = document.querySelector(".sun-halo");
   const links = Array.isArray(window.SITE_LINKS) ? window.SITE_LINKS : [];
@@ -212,6 +213,37 @@
 
     fallbackLinks.replaceChildren(fragment);
   }
+
+  function setNailongForm(form) {
+    if (!nailongCharacter) {
+      return;
+    }
+
+    const isBig = form === "big";
+    nailongCharacter.dataset.form = isBig ? "big" : "small";
+    nailongCharacter.setAttribute(
+      "aria-label",
+      isBig ? "点击切换为奶龙" : "点击切换为大奶龙"
+    );
+  }
+
+  function toggleNailongForm() {
+    if (!nailongCharacter) {
+      return;
+    }
+
+    setNailongForm(nailongCharacter.dataset.form === "big" ? "small" : "big");
+  }
+
+  nailongCharacter?.addEventListener("click", toggleNailongForm);
+  nailongCharacter?.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
+
+    event.preventDefault();
+    toggleNailongForm();
+  });
 
   scene.addEventListener("pointermove", (event) => {
     if (event.pointerType === "touch") {

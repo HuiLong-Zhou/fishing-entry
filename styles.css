@@ -191,8 +191,60 @@ a {
   animation: person-breathe 4.6s ease-in-out infinite;
 }
 
+.nailong-character {
+  cursor: pointer;
+  outline: none;
+}
+
 .nailong-character-model {
   filter: drop-shadow(0 5px 5px rgba(3, 22, 30, 0.28));
+}
+
+.nailong-form {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  transition:
+    opacity 360ms ease,
+    transform 460ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 220ms ease;
+}
+
+.nailong-form--big {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(14px) scale(0.88);
+}
+
+.nailong-character[data-form="big"] .nailong-form--small {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px) scale(0.9);
+}
+
+.nailong-character[data-form="big"] .nailong-form--big {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.nailong-hit-area {
+  fill: transparent;
+  stroke: rgba(255, 235, 184, 0);
+  stroke-width: 3;
+  pointer-events: all;
+  transition:
+    stroke 180ms ease,
+    filter 180ms ease;
+}
+
+.nailong-character:hover .nailong-hit-area,
+.nailong-character:focus-visible .nailong-hit-area {
+  stroke: rgba(255, 229, 167, 0.7);
+  filter: drop-shadow(0 0 10px rgba(255, 205, 111, 0.58));
+}
+
+.nailong-character:hover .nailong-form,
+.nailong-character:focus-visible .nailong-form {
+  filter: drop-shadow(0 0 12px rgba(255, 207, 117, 0.36));
 }
 
 .boat-reflection {
@@ -572,6 +624,10 @@ a {
   .fish-label rect {
     fill: rgba(5, 25, 35, 0.74);
     stroke: rgba(255, 230, 183, 0.22);
+  }
+
+  .nailong-character:hover .nailong-hit-area {
+    stroke: rgba(255, 235, 184, 0);
   }
 
   .sun-road {
